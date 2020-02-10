@@ -1,5 +1,7 @@
 void setup() {
-  // put your setup code here, to run once:
+  
+  attachInterrupt(digitalPinToInterrupt(2), isr, mode);
+  attachInterrupt(digitalPinToInterrupt(3), button_isr, mode);
 
 }
 
@@ -9,6 +11,10 @@ float hysteresis = 0.5;
 int demand = 0;
 int outputState = 0;
 unsigned long lastTransition = 0;
+
+void isr(){
+  
+}
 
 void processDemand() {
   if (outputState != demand) {
@@ -31,8 +37,6 @@ void processDemand() {
 }
 
 void loop() {
-  
-  setPoint = ReadSetPoint();
   
   tempNow = ReadTemperature();
   
